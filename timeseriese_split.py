@@ -26,3 +26,22 @@ X, y = split_sequence(raw_seq, n_steps)
 # summarize the data
 for i in range(len(X)):
 	print(X[i], y[i])
+
+# Now we implement a simple lstm model:
+
+# reshape from [samples, timesteps] into [samples, timesteps, features]
+n_features = 1
+X = X.reshape((X.shape[0], X.shape[1], n_feature
+	       
+# define model
+model = Sequential()
+model.add(LSTM(50, activation='relu', input_shape=(n_steps, n_features)))
+model.add(Dense(1))
+model.compile(optimizer='adam', loss='mse')
+# fit model
+model.fit(X, y, epochs=200, verbose=0)
+# demonstrate prediction
+x_input = array([70, 80, 90])
+x_input = x_input.reshape((1, n_steps, n_features))
+yhat = model.predict(x_input, verbose=0)
+print(yhat)
